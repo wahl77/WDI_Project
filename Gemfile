@@ -25,7 +25,6 @@ gem 'jquery-rails'
 
 group :development do
   gem 'pry-rails'
-  gem 'pry-debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -34,6 +33,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'pry-debugger'
 end
 
 # To use ActiveModel has_secure_password
