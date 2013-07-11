@@ -46,6 +46,9 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
+    dotenv (0.8.0)
+    dotenv-rails (0.8.0)
+      dotenv (= 0.8.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -160,6 +163,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  dotenv-rails
   factory_girl_rails
   haml-rails
   jquery-rails
