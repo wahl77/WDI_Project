@@ -22,26 +22,21 @@
             / .nav, .navbar-search, .navbar-form, etc
             %ul.nav
               %li 
-                = link_to "Home", root_path
+                = link_to "Profile", root_path
               %li 
-                = link_to "Home", root_path
+                = link_to "Items", root_path
               %li 
-                = link_to "Home", root_path
-              %li 
-                = link_to "Home", root_path
-              %li 
-                = link_to "Home", root_path
-              %li 
-                = link_to "Home", root_path
+                = link_to "Business", root_path
 
             %ul.nav.pull-right
               %li
                 %a{href:"#myModal", "data-toggle" => "modal"}Login
 
+
     / Modal
     #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
       .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
         %h3#myModalLabel Sign In  
       .modal-body
         = form_tag "x" do 
@@ -49,7 +44,7 @@
           .input-prepend
             %span.add-on
               %i.icon-envelope
-          = text_field_tag :email, params[:username], placeholder:"Username"
+          = text_field_tag :email, params[:email], placeholder:"E-mail"
 
           = label_tag :pasword
           .input-prepend
