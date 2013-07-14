@@ -46,8 +46,15 @@
       .modal-body
         = form_tag "x" do 
           = label_tag :email
+          .input-prepend
+            %span.add-on
+              %i.icon-envelope
           = text_field_tag :email, params[:username], placeholder:"Username"
+
           = label_tag :pasword
+          .input-prepend
+            %span.add-on
+              %i.icon-asterisk
           = password_field_tag :password, params[:password], type:"password", placeholder:"Password"
           %br
           = submit_tag :Login, :class => "btn btn-primary"  
