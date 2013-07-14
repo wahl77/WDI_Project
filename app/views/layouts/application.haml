@@ -1,10 +1,71 @@
 !!!
 %html
   %head
-    %title
-      Awesome Rails Project
+    %title NearBuy
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  = yield 
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          / .btn-navbar is used as the toggle for collapsed navbar content
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          / Be sure to leave the brand out there if you want it shown
+          %a.brand{:href => "#"} NearBuy
+          / Everything you want hidden at 940px or less, place within here
+          .nav-collapse.collapse
+            / .nav, .navbar-search, .navbar-form, etc
+            %ul.nav
+              %li 
+                = link_to "Home", root_path
+              %li 
+                = link_to "Home", root_path
+              %li 
+                = link_to "Home", root_path
+              %li 
+                = link_to "Home", root_path
+              %li 
+                = link_to "Home", root_path
+              %li 
+                = link_to "Home", root_path
+          
+          - if true
+            = link_to "Signup", root_path, :class => "btn btn-inverse pull-right"
+
+            = form_tag "x", class:"navbar-form pull-right" do
+              = text_field_tag :username, params[:username], placeholder:"Username", class:"span2"
+              = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
+              = submit_tag :Login, :class => "btn btn-inverse"
+
+          - else
+            .btn
+              = link_to "My Albmus", user_path(current_user)
+            .pull-right 
+              Hello
+              = current_user.username.capitalize
+              .btn
+                = link_to "Logout", logout_path
+
+
+      .container
+        .row
+          .span12
+            #map
+              cwblah"
+        .row
+          .span12
+            .search_map
+              .locate_me
+              %input.input-block-level#search{type:"text", placeholder:"Address"}
+              .go
+
+
+       
+          
+            = yield 
+
