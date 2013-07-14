@@ -33,23 +33,28 @@
                 = link_to "Home", root_path
               %li 
                 = link_to "Home", root_path
-          
-          - if true
-            = link_to "Signup", root_path, :class => "btn btn-inverse pull-right"
 
-            = form_tag "x", class:"navbar-form pull-right" do
-              = text_field_tag :username, params[:username], placeholder:"Username", class:"span2"
-              = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
-              = submit_tag :Login, :class => "btn btn-inverse"
+            %ul.nav.pull-right
+              %li
+                %a{href:"#myModal", "data-toggle" => "modal"}Login
 
-          - else
-            .btn
-              = link_to "My Albmus", user_path(current_user)
-            .pull-right 
-              Hello
-              = current_user.username.capitalize
-              .btn
-                = link_to "Logout", logout_path
+    / Modal
+    #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3#myModalLabel Sign In  
+      .modal-body
+        = form_tag "x" do 
+          = label_tag :email
+          = text_field_tag :email, params[:username], placeholder:"Username"
+          = label_tag :pasword
+          = password_field_tag :password, params[:password], type:"password", placeholder:"Password"
+          %br
+          = submit_tag :Login, :class => "btn btn-primary"  
+      .modal-footer
+        = link_to "Signup", root_path
+        %br
+        = link_to "Forgot Password", root_path
 
 
     .container
