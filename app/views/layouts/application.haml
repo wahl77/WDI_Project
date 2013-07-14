@@ -52,20 +52,5 @@
                 = link_to "Logout", logout_path
 
 
-      .container
-        .row
-          .span12
-            #map
-              cwblah"
-        .row
-          .span12
-            .search_map
-              .locate_me
-              %input.input-block-level#search{type:"text", placeholder:"Address"}
-              .go
-
-
-       
-          
-            = yield 
-
+    .container
+      = yield 

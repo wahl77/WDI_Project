@@ -22,43 +22,42 @@ body{
 
 #map{
   width: 100%;
-  height: 50px;
+  height: 200px;
   background-color: red;
   border-radius-bottom: 10px;
+  max-width: none;
 }
+
+#map img{ /* Solve google maps + bootstrap not workgin */
+  max-width: none;
+}
+
+
+.input_search > * {
+  float: left;
+}
+
 
 #search{
   background-color: blue;
-  width:100%;
-  border: 0px;
-  height: 30px;
-  color: grey;
+  height: 37px;
+  padding-left: 100px;
+  padding-right: 100px;
   font-size: 20px;
-  text-align: center;
-}
-
-.input-prepend .ad-on, .input-append > span{
-  width: 100%;
-}
-
-.search_map {
-  overflow: hidden;
-}
-
-.search_map > *{
-  float: left;
-}
-
-.search_map .locate_me, .search_map .go{
-  background-color: green;
-  width: 10%;
-  height: 10px;
-  float: left;
+  line-height: 37px;
+  text-align: left;
 }
 
 
-.search_map #search{
-  width: 80%;
-  float: left;
+.input_search .before {
+  background: url('tmp.png') no-repeat -41px -74px;
+  height: 36px;
+  width: 36px;
+  position: absolute;
 }
 
+.input_search .after{
+  background: url('tmp.png') no-repeat -0px -175px;
+  width: 78px;
+  height: 36px;
+}
