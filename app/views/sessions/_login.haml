@@ -1,0 +1,22 @@
+/ Modal
+.modal-body
+  = form_tag sessions_path do 
+    = label_tag :email
+    .input-prepend
+      %span.add-on
+        %i.icon-envelope
+    = text_field_tag :email, params[:email], placeholder:"E-mail"
+
+    = label_tag :pasword
+    .input-prepend
+      %span.add-on
+        %i.icon-asterisk
+    = password_field_tag :password, params[:password], type:"password", placeholder:"Password"
+    .field
+      = check_box_tag :remember_me, 1, params[:remember_me]
+      = label_tag :remember_me
+    = submit_tag :Login, :class => "btn btn-primary"  
+.modal-footer
+  = link_to "Signup", new_user_path
+  %br
+  = link_to "Forgot Password", root_path

@@ -16,7 +16,7 @@
             %span.icon-bar
             %span.icon-bar
           / Be sure to leave the brand out there if you want it shown
-          %a.brand{:href => "#"} NearBuy
+          = link_to "Nearby", root_path, class:"brand"
           / Everything you want hidden at 940px or less, place within here
           .nav-collapse.collapse
             / .nav, .navbar-search, .navbar-form, etc
@@ -30,34 +30,30 @@
 
             %ul.nav.pull-right
               %li
-                %a{href:"#myModal", "data-toggle" => "modal"}Login
+                - if !current_user
+                  %a{href:"#login_modal", "data-toggle" => "modal"}Login
+                - else
+                  = link_to "Logout #{current_user.email}", logout_path
 
 
-    / Modal
-    #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
-        %h3#myModalLabel Sign In  
-      .modal-body
-        = form_tag "x" do 
-          = label_tag :email
-          .input-prepend
-            %span.add-on
-              %i.icon-envelope
-          = text_field_tag :email, params[:email], placeholder:"E-mail"
 
-          = label_tag :pasword
-          .input-prepend
-            %span.add-on
-              %i.icon-asterisk
-          = password_field_tag :password, params[:password], type:"password", placeholder:"Password"
-          %br
-          = submit_tag :Login, :class => "btn btn-primary"  
-      .modal-footer
-        = link_to "Signup", root_path
-        %br
-        = link_to "Forgot Password", root_path
+    - if !current_user 
+      #login_modal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+          %h3#myModalLabel Sign In  
+ 
+        = render partial:"sessions/login"
 
-
+    .container 
+      .row
+        .span12 
+          - unless flash[:notice].blank?
+            .alert
+              = flash[:notice]
+          - unless flash[:alert].blank?
+            .alert.alert-error  
+              = flash[:alert]
+          
     .container
       = yield 

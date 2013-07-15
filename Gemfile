@@ -7,6 +7,9 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'haml-rails'
+gem 'carrierwave'
+gem 'sorcery'
+
 
 
 # Gems used only for assets and not required
@@ -34,6 +37,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-debugger'
+  gem 'dotenv-rails'
 end
 
 # To use ActiveModel has_secure_password
