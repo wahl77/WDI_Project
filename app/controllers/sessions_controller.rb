@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
 
-    user = login(params[:email], params[:password], params[:rememb_me])
+    user = login(params[:email], params[:password], params[:remember_me])
     if user
       redirect_back_or_to root_path, notice:"Logged in successfully!"
     else
