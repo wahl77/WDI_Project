@@ -1,0 +1,13 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item_picture_list{
+  overflow: hidden
+}
+.item_picture_list > *{
+  max-height: 200px;
+  max-width: 200px;
+}
+
+

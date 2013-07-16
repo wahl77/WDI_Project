@@ -1,0 +1,13 @@
+%h1 
+  Item
+  = @item.name
+
+Description: 
+%br
+= @item.description
+
+.item_picture_list
+  - @item.images.each do |image|
+    = image_tag image.url, class: "item_tile"
+
+

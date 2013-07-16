@@ -1,0 +1,29 @@
+= form_for @item do |f|
+  - if @item.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @item.errors.full_messages
+          %li= message
+
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :description
+    = f.text_area :description, rows: "3" 
+
+  .field
+    = f.label :image, "Add Picture"
+    = f.file_field :image
+
+  .actions
+    = f.submit "Submit"
+
+
+
+.item_picture_list
+  - @item.images.each do |image|
+    = image_tag image.url, class: "item_tile"

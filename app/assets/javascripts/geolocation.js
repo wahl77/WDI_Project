@@ -5,12 +5,27 @@ $(document).ready(function(){
 
   
  function show_pos(position) {
-   var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+   var latitude = position.coords.latitude
+   var longitude = position.coords.longitude
+
+   var pos = new google.maps.LatLng(latitude, longitude);
+
+   options = {
+    url: "update_location", 
+    type: "get",
+    data: {
+      "location[latitude]": latitude,
+      "location[longitude]": longitude
+    }
+    
+   };
+
+   $.ajax(options);
 
    var infowindow = new google.maps.InfoWindow({
      map: map,
      position: pos,
-     content: 'Location HTML5.'
+     content: 'You are here'
    });
     map.setCenter(pos);
   }

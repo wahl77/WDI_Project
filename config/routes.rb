@@ -4,6 +4,8 @@ RailsProject::Application.routes.draw do
   get "/signup" => 'users#new', as: :signup
   root :to => 'static_pages#index'
 
+  get "/update_location" => 'locations#new_geotag', as: :geotag
+
   
   resources :sessions
   resources :users
