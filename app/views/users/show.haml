@@ -1,0 +1,19 @@
+%h1 
+  My Profile
+
+- if !@user.image.nil?
+  = image_tag @user.image.url, id: "profile_image"
+
+%br
+URL:
+= @user.image.url
+%br
+
+
+Email: 
+= @user.email
+
+%br
+
+= link_to "Edit My Profile", edit_user_path(@user)
+

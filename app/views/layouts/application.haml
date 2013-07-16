@@ -21,8 +21,10 @@
           .nav-collapse.collapse
             / .nav, .navbar-search, .navbar-form, etc
             %ul.nav
-              %li 
-                = link_to "Profile", root_path
+              - if current_user
+                %li 
+                  = link_to "My Profile", user_path(current_user)
+
               %li 
                 = link_to "Items", root_path
               %li 

@@ -15,4 +15,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+    @items = @user.items
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @image = Image.create(url: params[:user][:image])
+    if @user.update_attributes(image: @image)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
+    
+  end
+
 end
