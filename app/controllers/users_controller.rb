@@ -18,8 +18,12 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @items = @user.items
-    @locations = current_user.locations
-    @markers = @locations.last.to_gmaps4rails unless @locations.empty?
+    @locations = current_user.locations.last
+    @markers = @locations.to_gmaps4rails
+   @markers = '[
+             {"description": "", "title": "", "sidebar": "", "lng": "28.8701", "lat": "47.0345", "picture": "", "width": "", "height": ""},
+             {"lng": "28.9", "lat": "47" }
+            ]' 
   end
 
   def edit
