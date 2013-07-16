@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @items = @user.items
+    @locations = current_user.locations
+    @markers = @locations.last.to_gmaps4rails
   end
 
   def edit
