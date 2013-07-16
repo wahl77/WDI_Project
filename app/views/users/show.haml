@@ -2,16 +2,21 @@
   My Profile
 
 - if !@user.image.nil?
-  = image_tag @user.image.url, id: "profile_image"
-
-%br
-URL:
-= @user.image.url
-%br
+  = image_tag @user.image.url, id: "profile_picture"
 
 
-Email: 
-= @user.email
+  
+.field
+  = label_tag :first_name
+  = @user.first_name || "Not Set"
+
+.field
+  = label_tag :last_name
+  = @user.last_name || "Not Set"
+
+.field
+  = label_tag :Email
+  = @user.email
 
 %br
 

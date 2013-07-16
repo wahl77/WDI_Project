@@ -26,8 +26,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @image = Image.create(url: params[:user][:image])
-    if @user.update_attributes(image: @image)
+    @image = params[:user][:image].nil? ? current_user.image : Image.create(url: params[:user][:image])
+    if @user.update_attributes(first_name: params[:user][:first_name], last_name: params[:user][:last_name], image: @image)
       redirect_to user_path(current_user)
     else
       render :edit

@@ -6,7 +6,17 @@
         - for message in @user.errors.full_messages
           %li= message
   .field
-    = f.label :image
+    = f.label :image, "Profile Picture"
+    = image_tag @user.image.url, id: :profile_picture if @user.image
+    %br
     = f.file_field :image
   
-  .actions= f.submit "Upload"
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+
+  .actions= f.submit "Submit"
