@@ -11,6 +11,7 @@
  *= require_self
  *= require BootStrap/bootstrap.css
  *= require BootStrap/bootstrap-responsive.css
+ *= require gmaps4rails.css
  */
 
 html, body{
