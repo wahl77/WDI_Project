@@ -42,7 +42,7 @@ $(document).ready(function(){
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    map = new google.maps.Map(document.getElementById('map_home_page'), mapOptions);
 
     // Try HTML5 geolocation
     if(navigator.geolocation) {
