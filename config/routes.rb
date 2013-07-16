@@ -4,8 +4,8 @@ RailsProject::Application.routes.draw do
   get "/signup" => 'users#new', as: :signup
   root :to => 'static_pages#index'
 
-  get "/login" => 'bal#bla', as: :login
   
   resources :sessions
   resources :users
+  resources :items
 end

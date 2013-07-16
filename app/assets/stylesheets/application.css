@@ -69,3 +69,7 @@ body{
   top: 0;
   right: 0;
 }
+
+#profile_image{
+  width: 200px;
+}
