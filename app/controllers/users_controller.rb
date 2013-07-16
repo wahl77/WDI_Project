@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = current_user
     @items = @user.items
     @locations = current_user.locations
-    @markers = @locations.last.to_gmaps4rails
+    @markers = @locations.last.to_gmaps4rails unless @locations.empty?
   end
 
   def edit
