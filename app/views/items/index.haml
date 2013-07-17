@@ -1,17 +1,22 @@
 .container
   .row 
-    .span12 
+    .span6 
       %h2 Your items
       %h3 
         You currently have 
         = pluralize(@items.length, "item")
         listed
 
-      - @items.each do |item|
-        = item.name
-        = link_to "View", item_path(item.id)
-        = link_to "Edit", edit_item_path(item.id)
-        = link_to "Delete", item_path(item.id), method: :delete
+      %table{width: "100%"}
+        - @items.each do |item|
+          %tr
+            %td= item.name
+            %td
+              = link_to "View", item_path(item.id)
+              \|
+              = link_to "Edit", edit_item_path(item.id)
+              \|
+              = link_to "Delete", item_path(item.id), method: :delete
         %br
 
       %br

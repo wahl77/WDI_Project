@@ -37,9 +37,13 @@
         .row
           .span5
             %strong= address.name
-            %br= address.number_and_street
-            %br= address.city
-            %br= "#{address.state}, #{address.zip_code}"
+            %br
+            = address.number_and_street
+            %br
+            = address.city
+            %br
+            = "#{address.state}, #{address.zip_code}"
+            %br
             = link_to "Delete Address", address_path(address), method: :delete
           .span7
             // Here come more maps, later
