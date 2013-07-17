@@ -16,6 +16,10 @@
     = f.text_area :description, rows: "3" 
 
   .field
+    = f.label :location
+    = f.select :location, options_for_select(current_user.addresses.map{|x| [x.name, x.location.id]}) 
+
+  .field
     = f.label :image, "Add Picture"
     = f.file_field :image
 

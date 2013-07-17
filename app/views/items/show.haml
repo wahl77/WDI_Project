@@ -1,18 +1,19 @@
 .container
-  %h1 
-    Item
-    = @item.name
+  .row
+    %h1 
+      Item
+      = @item.name
 
   .row
-  .span6 
-    Description: 
-    %br
-    = @item.description
+    .span6 
+      Description: 
+      %br
+      = @item.description
 
-    .item_picture_list
-      - @item.images.each do |image|
-        = image_tag image.url, class: "item_tile"
+      .item_picture_list
+        - @item.images.each do |image|
+          = image_tag image.url, class: "item_tile"
 
-  .span6
-    = render partial:"layouts/map", locals:{locations: @item.location}
+    .span6
+      = render partial:"layouts/map", locals:{place:[@item.location]}
 

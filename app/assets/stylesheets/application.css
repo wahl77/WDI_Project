@@ -41,16 +41,13 @@ body{
   line-height: 150px;
 }
 
-#map_home_page img, #map img{ /* Solve google maps + bootstrap not workgin */
+.cool img, #map_home_page img{ /* Solve google maps + bootstrap not workgin */
   max-width: none;
 }
-
 
 .row{
   margin-bottom: 10px;
 }
-
-
 
 #search{
   background-color: white;
@@ -86,9 +83,3 @@ body{
 #profile_picture{
   width: 200px;
 }
-.map_container{
-  width: 100%;
-}                             
-.map_container .gmaps4rails_map{
-  width: 100%;
-  }

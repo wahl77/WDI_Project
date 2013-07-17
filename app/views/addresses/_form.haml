@@ -1,0 +1,21 @@
+= form_for Address.new do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :number_and_street, "Street and number"
+    = f.text_field :number_and_street
+
+  .field
+    = f.label :city
+    = f.text_field :city
+
+  .field
+    = f.label :state
+    = f.select :state, ["AL", "AK", "AZ", "CA"]
+
+  .field
+    = f.label :zip_code
+    = f.text_field :zip_code
+  
+  .actions= f.submit "Add Address"

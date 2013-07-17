@@ -3,11 +3,13 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
   def create
-    @item = Item.new(name: params[:item][:name], description: params[:item][:description])
+    @item = Item.new(name: params[:item][:name], description: params[:item][:description], location_id: params[:item][:location])
 
-    @image = Image.create(url: params[:item][:image])
 
-    @item.images << @image
+    @image = Image.create(url: params[:item][:image]) unless params[:item][:image].nil?
+
+    @item.images << @image unless @image.nil?
+
 
     if @item.save
       current_user.items << @item

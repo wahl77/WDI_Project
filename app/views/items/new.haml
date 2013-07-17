@@ -1,9 +1,10 @@
-.row
-  .span12
-    %h3 Add an item
-.row
-  .span6
-    = render partial:"form"
-  .span6
-    = render partial:"layouts/map", locals:{locations: current_user.locations}
+.container
+  .row
+    .span12
+      %h3 Add an item
+  .row
+    .span6
+      = render partial:"form"
+    .span6
+      = render partial:"layouts/map", locals:{place: current_user.locations}
 

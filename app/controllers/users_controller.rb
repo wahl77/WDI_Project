@@ -18,8 +18,10 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @items = @user.items
-    @locations = current_user.locations
-    @markers = @locations.last.to_gmaps4rails unless @locations.empty?
+    @locations = []
+    current_user.addresses.each{|address|
+      @locations << address.location
+    }
   end
 
   def edit

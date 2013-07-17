@@ -1,37 +1,51 @@
 .container 
   .row
-    .span3.bs-docs-sidebar
-      %nav.nav-list.bs-docs-sidenav.affix
-        %li
-          %a "OK"
-          %i.icon-chevron-right
-        %li
-          %a "Blah"
-
-    .span9
+    .span12
       %h1 
         My Profile
 
-      - if !@user.image.nil?
-        = image_tag @user.image.url, id: "profile_picture"
+      .row
+        .span5
+          - if !@user.image.nil?
+            = image_tag @user.image.url, id: "profile_picture"
 
+          .field
+            = label_tag :first_name
+            = @user.first_name || "Not Set"
 
-        
+          .field
+            = label_tag :last_name
+            = @user.last_name || "Not Set"
 
-      .field
-        = label_tag :first_name
-        = @user.first_name || "Not Set"
+          .field
+            = label_tag :Email
+            = @user.email
 
-      .field
-        = label_tag :last_name
-        = @user.last_name || "Not Set"
+          %br
 
-      .field
-        = label_tag :Email
-        = @user.email
+          = link_to "Edit My Profile", edit_user_path(@user)
 
-      %br
+        .span7
 
-      = link_to "Edit My Profile", edit_user_path(@user)
+          = render partial:"layouts/map", locals:{place: @locations}
 
-      = render partial:"layouts/map", locals:{locations: @locations, markers: @markers}
+      %h3 My addresses
+      - current_user.addresses.each do |address|
+        .row
+          .span5
+            %strong= address.name
+            %br= address.number_and_street
+            %br= address.city
+            %br= "#{address.state}, #{address.zip_code}"
+            = link_to "Delete Address", address_path(address), method: :delete
+          .span7
+            // Here come more maps, later
+
+      .row
+        %hr
+        .span5
+
+          = render partial:"addresses/form"
+          
+          
+
