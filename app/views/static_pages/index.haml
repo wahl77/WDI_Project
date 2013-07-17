@@ -1,14 +1,15 @@
 %script{src:"https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"}
-.row
-  .span12
-    #map_home_page
-      %h1
-        %span 
-          A great place to find goods
-      
-.row
-  .span12
-    .input_search
-      .before#locate_me
-      %input.input-block-level#search{type:"text", placeholder:"Current Address or anything"}
-      .after
+.container 
+  .row
+    .span12
+      #map_home_page
+        %h1
+          %span 
+            A great place to find goods
+        
+  .row
+    .span12
+      .input_search
+        .before#locate_me
+        %input.input-block-level#search{type:"text", placeholder:"Current Address or anything"}
+        .after

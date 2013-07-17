@@ -13,12 +13,13 @@
       .navbar-inner
         .container
           / .btn-navbar is used as the toggle for collapsed navbar content
+          .pull-left
+            = link_to "Nearby", root_path, class:"brand"
           %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
           / Be sure to leave the brand out there if you want it shown
-          = link_to "Nearby", root_path, class:"brand"
           / Everything you want hidden at 940px or less, place within here
           .nav-collapse.collapse
             / .nav, .navbar-search, .navbar-form, etc
@@ -60,7 +61,6 @@
             .alert.alert-error  
               = flash[:alert]
           
-    .container
-      = yield 
+    = yield 
 
     = content_for :scripts

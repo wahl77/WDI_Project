@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716023148) do
+ActiveRecord::Schema.define(:version => 20130717000724) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "number_and_street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "name",              :default => "Home"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
+
+  add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "images", :force => true do |t|
     t.string   "url"
@@ -40,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130716023148) do
     t.string   "locatable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "gmaps"
   end
 
   add_index "locations", ["locatable_id", "locatable_type"], :name => "index_locations_on_locatable_id_and_locatable_type"

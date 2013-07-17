@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :image, as: :imageable, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :locations, as: :locatable, dependent: :destroy
+  has_many :addresses, as: :addressable, dependent: :destroy
 
 
   validates :email,

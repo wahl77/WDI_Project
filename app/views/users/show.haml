@@ -1,25 +1,37 @@
-%h1 
-  My Profile
+.container 
+  .row
+    .span3.bs-docs-sidebar
+      %nav.nav-list.bs-docs-sidenav.affix
+        %li
+          %a "OK"
+          %i.icon-chevron-right
+        %li
+          %a "Blah"
 
-- if !@user.image.nil?
-  = image_tag @user.image.url, id: "profile_picture"
+    .span9
+      %h1 
+        My Profile
+
+      - if !@user.image.nil?
+        = image_tag @user.image.url, id: "profile_picture"
 
 
-  
-.field
-  = label_tag :first_name
-  = @user.first_name || "Not Set"
+        
 
-.field
-  = label_tag :last_name
-  = @user.last_name || "Not Set"
+      .field
+        = label_tag :first_name
+        = @user.first_name || "Not Set"
 
-.field
-  = label_tag :Email
-  = @user.email
+      .field
+        = label_tag :last_name
+        = @user.last_name || "Not Set"
 
-%br
+      .field
+        = label_tag :Email
+        = @user.email
 
-= link_to "Edit My Profile", edit_user_path(@user)
+      %br
 
-= render partial:"layouts/map", locals:{locations: @locations, markers: @markers}
+      = link_to "Edit My Profile", edit_user_path(@user)
+
+      = render partial:"layouts/map", locals:{locations: @locations, markers: @markers}

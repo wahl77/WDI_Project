@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require gmaps4rails.css
+ *= require BootStrap/docs.css
  *= require BootStrap/bootstrap.css
  *= require BootStrap/bootstrap-responsive.css
  *= require_self

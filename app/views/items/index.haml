@@ -1,17 +1,18 @@
-%h2 Your items
-%h3 
-  You currently have 
-  = pluralize(@items.length, "item")
-  listed
+.container
+  %h2 Your items
+  %h3 
+    You currently have 
+    = pluralize(@items.length, "item")
+    listed
 
-- @items.each do |item|
-  = item.name
-  = link_to "View", item_path(item.id)
-  = link_to "Edit", edit_item_path(item.id)
-  = link_to "Delete", item_path(item.id), method: :delete
+  - @items.each do |item|
+    = item.name
+    = link_to "View", item_path(item.id)
+    = link_to "Edit", edit_item_path(item.id)
+    = link_to "Delete", item_path(item.id), method: :delete
 
-%br
-%br
-%br
+  %br
+  %br
+  %br
 
-= link_to "New Item", new_item_path
+  = link_to "New Item", new_item_path
