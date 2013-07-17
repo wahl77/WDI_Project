@@ -2,12 +2,16 @@
   Item
   = @item.name
 
-Description: 
-%br
-= @item.description
+.row
+.span6 
+  Description: 
+  %br
+  = @item.description
 
-.item_picture_list
-  - @item.images.each do |image|
-    = image_tag image.url, class: "item_tile"
+  .item_picture_list
+    - @item.images.each do |image|
+      = image_tag image.url, class: "item_tile"
 
+.span6
+  = render partial:"layouts/map", locals:{locations: @item.location}
 

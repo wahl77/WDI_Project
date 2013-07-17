@@ -8,10 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
+ *= require gmaps4rails.css
  *= require BootStrap/bootstrap.css
  *= require BootStrap/bootstrap-responsive.css
- *= require gmaps4rails.css
+ *= require_self
  */
 
 html, body{
@@ -20,6 +20,7 @@ html, body{
 
 body{
   padding: 40px 0 0 0;
+  padding: 50px 0 0 0;
 }
 
 #map_home_page{
@@ -45,7 +46,7 @@ body{
 
 
 .row{
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 
 
@@ -84,3 +85,9 @@ body{
 #profile_picture{
   width: 200px;
 }
+.map_container{
+  width: 100%;
+}                             
+.map_container .gmaps4rails_map{
+  width: 100%;
+  }
