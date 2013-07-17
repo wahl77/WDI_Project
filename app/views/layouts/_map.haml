@@ -1,4 +1,4 @@
 .cool
-  - if !place.nil? && !place.empty?
+  - if !place.empty?
     = gmaps("map_options" => {"zoom" => 10, "auto_zoom" => place.length > 1, id: "map#{place.first.id}"}, 
-        "markers" => {"data" => place.to_gmaps4rails}) 
+        "markers" => {"data" => place.to_gmaps4rails}) if !place.first.nil?

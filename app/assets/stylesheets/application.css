@@ -45,6 +45,10 @@ body{
   max-width: none;
 }
 
+.cool, .cool > *, .cool > * > * {
+  width: 100%;
+}
+
 .row{
   margin-bottom: 10px;
 }
@@ -82,4 +86,7 @@ body{
 
 #profile_picture{
   width: 200px;
+}
+table{
+  text-align: left;
 }

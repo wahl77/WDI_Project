@@ -9,17 +9,20 @@
           - if !@user.image.nil?
             = image_tag @user.image.url, id: "profile_picture"
 
-          .field
-            = label_tag :first_name
-            = @user.first_name || "Not Set"
+          %table{width: "100%"}
+            %th
+            %tbody
+              %tr
+                %th First Name
+                %td= @user.first_name || "Not Set"
 
-          .field
-            = label_tag :last_name
-            = @user.last_name || "Not Set"
+              %tr
+                %th Last Name
+                %td= @user.last_name || "Not Set"
 
-          .field
-            = label_tag :Email
-            = @user.email
+              %tr
+                %th Email
+                %td= @user.email
 
           %br
 

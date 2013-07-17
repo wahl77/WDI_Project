@@ -7,4 +7,10 @@ class Location < ActiveRecord::Base
   def gmaps4rails_address
     return "#{latitude}+#{longitude}"
   end
+
+  def gmaps4rails_infowindow
+    if locatable.class == Address
+      return locatable.name
+    end
+  end
 end
