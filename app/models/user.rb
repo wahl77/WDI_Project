@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def time_since_last_update
-    return Time.now - current_location.created_at
+    return Time.now - current_location.updated_at
   end
 
   def last_location_is_good

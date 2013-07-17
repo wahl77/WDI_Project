@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   def new
     @item = Item.new
+    @item_locations = current_user.current_location.nil? ? [] : [["Current Location", current_user.current_location.id]] 
+    @item_locations += current_user.addresses.map{|x| [x.name, x.location.id]}
   end
   def create
     @item = Item.new(name: params[:item][:name], description: params[:item][:description], location_id: params[:item][:location])

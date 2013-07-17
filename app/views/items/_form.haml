@@ -17,7 +17,7 @@
 
   .field
     = f.label :location
-    = f.select :location, options_for_select(current_user.addresses.map{|x| [x.name, x.location.id]}) 
+    = f.select :location, @item_locations
 
   .field
     = f.label :image, "Add Picture"
