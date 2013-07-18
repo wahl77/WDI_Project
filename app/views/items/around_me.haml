@@ -2,6 +2,15 @@
   .span12
     %h1 
       Around Me
+    %h3
+      We found 
+      =pluralize(@items.length, "item")
+      around you
+
+    %ul
     - @items.each do |item|
-      = item.name
-      %br
+      %li 
+        = link_to item.name, item_path(item.id)
+        = item.description
+        
+        

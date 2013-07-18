@@ -15,6 +15,11 @@ $(document).ready(function(){
       data: {
         "location[latitude]": latitude,
         "location[longitude]": longitude
+      },
+      complete: function(response){
+        console.log(response.responseText);
+        $('.row').last().append(response.responseText);
+
       }
     };
 
