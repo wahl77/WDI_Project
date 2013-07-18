@@ -30,7 +30,7 @@
 
         .span7
 
-          = render partial:"layouts/map", locals:{place: @locations}
+          = render partial:"layouts/map", locals:{place: current_user.locations}
 
       %h3 My addresses
       - current_user.addresses.each do |address|

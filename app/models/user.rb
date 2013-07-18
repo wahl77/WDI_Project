@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :image, :first_name, :last_name
 
 
-  has_one :image, as: :imageable, dependent: :destroy
+  has_one :image, as: :imageable, dependent: :destroy # Profile picture
   has_many :items, dependent: :destroy
-  has_many :locations, as: :locatable, dependent: :destroy
   has_many :addresses, as: :addressable, dependent: :destroy
+  has_many :locations, through: :addresses
 
 
   validates :email,
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def current_location
-    return self.locations.where("locatable_type = ?", self.class.to_s).first
+    return Location.where("locatable_type = ? AND locatable_id = ?", self.class.to_s, self.id).first
   end
 
   def current_location=(value)
@@ -45,6 +45,15 @@ class User < ActiveRecord::Base
       self.current_location.update_attributes(:latitude =>  value.latitude, :longitude => value.longitude)
     end
     save!
+  end
+
+  def locations
+    locations = []
+    locations << Location.where("locatable_type = ?", self.class.to_s).first 
+    self.addresses.each do |address|
+      locations << address.location
+    end
+    return locations
   end
 
   def time_since_last_update
