@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_image
   end
 
   def create
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path, notice:"User Created, go ahead and log in"
     else
+      @user.build_image
       render :new
     end
   end
@@ -26,12 +28,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @user.build_image
   end
 
   def update
     @user = current_user
-    @image = params[:user][:image].nil? ? current_user.image : Image.create(url: params[:user][:image])
-    if @user.update_attributes(first_name: params[:user][:first_name], last_name: params[:user][:last_name], image: @image)
+    @user.build_image
+    if @user.update_attributes(params[:user])
       redirect_to user_path(current_user)
     else
       render :edit

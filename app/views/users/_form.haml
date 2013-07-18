@@ -6,10 +6,11 @@
         - for message in @user.errors.full_messages
           %li= message
   .field
-    = f.label :image, "Profile Picture"
-    = image_tag @user.image.url, id: :profile_picture if @user.image
-    %br
-    = f.file_field :image
+    = f.fields_for :image do |b|
+      = b.label :url, "Profile Picture"
+      = image_tag @user.image.url, id: :profile_picture if @user.image
+      %br
+      = b.file_field :url
   
   .field
     = f.label :first_name

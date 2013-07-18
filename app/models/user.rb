@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
     presence:true, on: :create,
     confirmation:true
 
+ accepts_nested_attributes_for :image
+ attr_accessible :image_attributes
 
   def first_name=(value)
     write_attribute :first_name, value.capitalize
