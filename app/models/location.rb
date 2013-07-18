@@ -10,8 +10,15 @@ class Location < ActiveRecord::Base
   end
 
   def gmaps4rails_infowindow
-    if locatable.class == Address
-      return locatable.name
+    case locatable_type
+    when "Address"
+      return "<h4>#{locatable.name}</h4>#{locatable.number_and_street}<br>#{locatable.city}"
+    when "Item"
+      return "<h4>#{locatable.name}</h4>#{locatable.description}"
+    when "User"
+      return "Current Location"
+    else
+      return "#{locatable}"
     end
   end
 end
