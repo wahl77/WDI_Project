@@ -7,13 +7,9 @@ class ItemsController < ApplicationController
   def create
     loc = Location.find(params[:item][:location])
     b = loc.dup # Copy locaiton as a new field
-     
     @item = Item.new(name: params[:item][:name], description: params[:item][:description])
-
     @image = Image.create(url: params[:item][:image]) unless params[:item][:image].nil?
-
     @item.images << @image unless @image.nil?
-
     if @item.save
       @item.location = b
       current_user.items << @item
@@ -54,5 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def around_me
+    @items = Item.around(current_user.current_location)
   end
 end
