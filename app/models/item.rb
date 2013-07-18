@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
 
   has_many :images, as: :imageable, dependent: :destroy
 
-  has_one :location, as: :locatable
+  has_one :location, as: :locatable, dependent: :destroy
 
 
   # Get a list of items which are around a current location
