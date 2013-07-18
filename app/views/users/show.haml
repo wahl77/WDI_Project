@@ -53,6 +53,27 @@
         .span5
 
           = render partial:"addresses/form"
-          
-          
 
+:javascript
+  $(document).ready(function(){
+    get_location();
+    function get_location(){
+      if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(show_pos, show_error);
+      }
+    }
+    function show_pos(position){
+      options = {
+      url: "/update_location",
+      type: "get",
+      data: {
+        "location[latitude]": position.coords.latitude,
+        "location[longitude]": position.coords.longitude
+        }
+      };
+      console.log(options.data);
+      $.ajax(options);
+    }
+
+    function show_error(){}
+  });
