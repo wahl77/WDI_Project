@@ -10,6 +10,7 @@ gem 'haml-rails'
 gem 'carrierwave'
 gem 'sorcery'
 gem 'gmaps4rails'
+gem 'geocoder'
 
 
 

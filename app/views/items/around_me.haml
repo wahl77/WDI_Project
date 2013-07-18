@@ -1,0 +1,7 @@
+.container
+  .span12
+    %h1 
+      Around Me
+    - Location.near(current_user.current_location, 100).where("locatable_type = ?", "Item").each do |x|
+      = Item.find(x.locatable_id).name
+      %br

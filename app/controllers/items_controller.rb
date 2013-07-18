@@ -5,14 +5,17 @@ class ItemsController < ApplicationController
     @item_locations += current_user.addresses.map{|x| [x.name, x.location.id]}
   end
   def create
-    @item = Item.new(name: params[:item][:name], description: params[:item][:description], location_id: params[:item][:location])
-
+    loc = Location.find(params[:item][:location])
+    b = loc.dup # Copy locaiton as a new field
+     
+    @item = Item.new(name: params[:item][:name], description: params[:item][:description])
 
     @image = Image.create(url: params[:item][:image]) unless params[:item][:image].nil?
 
     @item.images << @image unless @image.nil?
 
     if @item.save
+      @item.location = b
       current_user.items << @item
       redirect_to item_path(@item)
     else
@@ -50,4 +53,6 @@ class ItemsController < ApplicationController
     end 
   end
 
+  def around_me
+  end
 end
