@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.build_image
   end
 
   def create
@@ -28,15 +27,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @user.build_image
+    @user.build_image if @user.image.nil?
   end
 
   def update
     @user = current_user
-    @user.build_image
     if @user.update_attributes(params[:user])
       redirect_to user_path(current_user)
     else
+      @user.build_image
       render :edit
     end
     

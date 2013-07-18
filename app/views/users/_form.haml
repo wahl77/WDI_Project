@@ -7,9 +7,9 @@
           %li= message
   .field
     = f.fields_for :image do |b|
-      = b.label :url, "Profile Picture"
-      = image_tag @user.image.url, id: :profile_picture if @user.image
+      = image_tag @user.image.url, id: "profile_picture" unless @user.image.id.nil?
       %br
+      = b.label :url, "Profile Picture"
       = b.file_field :url
   
   .field
