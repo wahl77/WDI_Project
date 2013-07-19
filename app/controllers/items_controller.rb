@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.js { render layout: false }
     end
 
     #@per_page = 5

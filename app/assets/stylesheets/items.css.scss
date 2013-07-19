@@ -18,6 +18,16 @@
   background: red;
   border: 1px solid black;
   margin: 10px;
+  text-align: center;
+}
+
+.item_picture a, .item_picture p {
+  background-color: rgba(255, 255, 255, 0.4);
+  display: inline;
+}
+
+.item_picutre h1{
+  font-size: 10px;
 }
 
 
