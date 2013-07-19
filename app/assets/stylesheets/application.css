@@ -13,6 +13,7 @@
  *= require BootStrap/bootstrap.css
  *= require BootStrap/bootstrap-responsive.css
  *= require_self
+ *= require items
  */
 
 html, body{

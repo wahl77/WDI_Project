@@ -51,5 +51,9 @@ class ItemsController < ApplicationController
 
   def around_me
     @items = Item.around(current_user.current_location)
+    @locations = []
+    @items.each do |item|
+      @locations << item.location
+    end
   end
 end

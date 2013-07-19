@@ -3,11 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .item_picture_list{
+  margin: 0 auto;
   overflow: hidden
 }
 .item_picture_list > *{
   max-height: 200px;
   max-width: 200px;
+}
+
+.item_picture{
+  float: left;
+  width: 200px;
+  height: 200px;
+  background: red;
+  border: 1px solid black;
+  margin: 10px;
 }
 
 

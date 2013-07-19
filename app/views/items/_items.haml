@@ -1,0 +1,4 @@
+- @items.each do |item|
+  .item_picture 
+    = link_to item.name, item_path(item.id)
+    = item.description
