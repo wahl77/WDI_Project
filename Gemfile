@@ -8,10 +8,14 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'haml-rails'
 gem 'carrierwave'
+gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
 gem 'sorcery'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'will_paginate'
+gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+
 
 
 

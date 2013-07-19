@@ -6,7 +6,7 @@
       %p
         = item.description
   - else
-    .item_picture{style:"background-position: center center; background: url(\"#{item.images.first.url unless item.images.empty?}\")"}
+    .item_picture{style:"background: url(\"#{item.images.first.url unless item.images.empty?}\"); background-size: 200px 200px; "}
       %h1
         = link_to item.name, item_path(item.id)
       %p
