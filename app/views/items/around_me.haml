@@ -1,16 +1,23 @@
 .container
   .row 
     .span12
-    %h1 
-      Around Me
-    %h3
-      We found 
-      =pluralize(@items.length, "item")
-      around you
+      %h1 
+        Around Me
+      %h3
+        We found 
+        =pluralize(@items.length, "item")
+        around you
+  .row
+    .span12
 
-    /= render partial:"layouts/map", locals:{place: @locations}
+      /= render partial:"layouts/map", locals:{place: @locations}
 
-    .item_picture_list
-      = render partial:"items"
+      .item_picture_list
+        = render partial:"items"
 
-    = will_paginate @locations
+      = will_paginate @locations
+
+  .row
+    .span12
+      .spinner
+        = image_tag "ajax-loader.gif"
