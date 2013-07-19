@@ -50,10 +50,24 @@ class ItemsController < ApplicationController
   end
 
   def around_me
-    @items = Item.around(current_user.current_location)
-    @locations = []
-    @items.each do |item|
-      @locations << item.location
+    @per_page = 5
+    @items = []
+    @locations = Location.page(params[:page]).per_page(@per_page).near(current_user.current_location, 100).where("locatable_type = ?", "Item") 
+    @locations.each do |location|
+      @items << Item.find(location.locatable_id)
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+    #@per_page = 5
+    #@items = Item.around(current_user.current_location)
+    ##.page(params[:page]).per_page(@per_page)
+    #@locations = []
+    #@items.each do |item|
+    #  @locations << item.location
+    #end
   end
 end

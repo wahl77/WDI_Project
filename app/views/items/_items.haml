@@ -1,4 +1,9 @@
 - @items.each do |item|
-  .item_picture 
-    = link_to item.name, item_path(item.id)
-    = item.description
+  - if item.images.empty?
+    .item_picture
+      = link_to item.name, item_path(item.id)
+      = item.description
+  - else
+    .item_picture{style:"background-position: center center; background: url(\"#{item.images.first.url unless item.images.empty?}\")"}
+      = link_to item.name, item_path(item.id)
+      = item.description

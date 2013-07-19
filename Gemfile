@@ -11,6 +11,7 @@ gem 'carrierwave'
 gem 'sorcery'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'will_paginate'
 
 
 

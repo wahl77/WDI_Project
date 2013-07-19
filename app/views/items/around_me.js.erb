@@ -1,0 +1,10 @@
+alert("OK");
+$('.item_picture_list').append('<%= j render partial:"items" %>')
+                                                         
+<% if @locations.next_page %>                             
+  $('.pagination').replaceWith('<%= j will_paginate @locations %>');
+<% else %>                                               
+  $('.pagination').remove();
+<% end %>
+
+$(window).scroll();
