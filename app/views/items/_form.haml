@@ -17,11 +17,16 @@
 
   .field
     = f.label :location
-    = f.select :location, @item_locations
+    = f.select :location, @item_locations 
 
   .field
     = f.label :image, "Add Picture"
     = f.file_field :image
+
+  .field 
+    - Category.all.each do |category|
+      = check_box_tag "item[category_ids][]", category.id
+      = category.name
 
   .actions
     = f.submit "Submit"

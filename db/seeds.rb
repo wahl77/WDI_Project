@@ -27,3 +27,6 @@ b.addresses.create(name: "Janes", city: "New York", number_and_street: "251 West
   item.location = loc
 end
 
+%w( General Rentals Neighborliness Travel Education Pets Events Jobs Recommendations Restaurant Bar ).each do |x| 
+  Category.create(name: x)
+end

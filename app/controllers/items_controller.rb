@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
   end
   def create
     loc = Location.find(params[:item][:location])
-    b = loc.dup # Copy locaiton as a new field
-    @item = Item.new(name: params[:item][:name], description: params[:item][:description])
+    b = loc.dup 
+    @item = Item.new(name: params[:item][:name], description: params[:item][:description], category_ids: params[:item][:category_ids])
     @image = Image.create(url: params[:item][:image]) unless params[:item][:image].nil?
     @item.images << @image unless @image.nil?
     if @item.save
@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @item_locations = current_user.current_location.nil? ? [] : [["Current Location", current_user.current_location.id]] 
   end
   def show
     @item = Item.find(params[:id])
