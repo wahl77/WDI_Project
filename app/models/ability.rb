@@ -46,6 +46,9 @@ class Ability
       some_user == user 
     end
 
+    can :read, Address do |address|
+      user.addresses.include? address
+    end
     can :destroy, Address do |address|
       user.addresses.include? address
     end

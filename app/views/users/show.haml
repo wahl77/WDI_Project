@@ -2,7 +2,7 @@
   .row
     .span12
       %h1 
-        My Profile
+        Profile
 
       .row
         .span5
@@ -30,23 +30,23 @@
 
         .span7
 
-          = render partial:"layouts/map", locals:{place: current_user.locations}
+          = render partial:"layouts/map", locals:{place: @user.locations} if @user == current_user
 
-      %h3 My addresses
-      - @user.addresses.each do |address|
+      - if can? :read, @user.addresses.first
+        %h3 My addresses
+        
         .row
-          .span5
-            %strong= address.name
-            %br
-            = address.number_and_street
-            %br
-            = address.city
-            %br
-            = "#{address.state}, #{address.zip_code}"
-            %br
-            = link_to "Delete Address", address_path(address), method: :delete if can? :destroy, address
-          .span7
-            // Here come more maps, later
+          .span12.address_list
+            - @user.addresses.each do |address|
+              .address_item
+                %strong= address.name
+                = address.number_and_street
+                %br
+                = address.city
+                %br
+                = "#{address.state}, #{address.zip_code}"
+                %br
+                = link_to "Delete Address", address_path(address), method: :delete if can? :destroy, address
 
       .row
         %hr

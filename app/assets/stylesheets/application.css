@@ -14,6 +14,7 @@
  *= require BootStrap/bootstrap-responsive.css
  *= require_self
  *= require items
+ *= require users
  */
 
 html, body{
