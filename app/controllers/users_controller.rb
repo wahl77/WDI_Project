@@ -17,10 +17,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @items = @user.items
     @locations = []
-    current_user.addresses.each{|address|
+    @user.addresses.each{|address|
       @locations << address.location
     }
   end

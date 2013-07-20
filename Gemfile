@@ -14,6 +14,7 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'will_paginate'
 gem 'simple_form'
+gem 'cancan'
 #gem 'sunspot_rails'
 #gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 

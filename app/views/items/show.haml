@@ -8,8 +8,8 @@
   .row
     .span6 
       .item_picture_list
-        = @item.image_url
-        = image_tag @item.images.first.url, class: "item_tile"
+        - @item.images.each do |image|
+          = image_tag image.url, class: "item_tile"
 
     .span6 
       = render partial:"layouts/map", locals:{place:[@item.location]}
@@ -34,3 +34,7 @@
             %li= category.name
     .span4
       %h4 Availabilites
+  .row
+    .span12
+      = link_to "Edit", edit_item_path(@item.id), class: "btn btn-warning" if can? :edit, @item
+      = link_to "Delete", item_path(@item.id), {method: :delete, class: "btn btn-danger"} if can? :destroy, @item

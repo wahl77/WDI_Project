@@ -26,14 +26,14 @@
 
           %br
 
-          = link_to "Edit My Profile", edit_user_path(@user)
+          = link_to "Edit My Profile", edit_user_path(@user) if can? :update, @user
 
         .span7
 
           = render partial:"layouts/map", locals:{place: current_user.locations}
 
       %h3 My addresses
-      - current_user.addresses.each do |address|
+      - @user.addresses.each do |address|
         .row
           .span5
             %strong= address.name
@@ -44,7 +44,7 @@
             %br
             = "#{address.state}, #{address.zip_code}"
             %br
-            = link_to "Delete Address", address_path(address), method: :delete
+            = link_to "Delete Address", address_path(address), method: :delete if can? :destroy, address
           .span7
             // Here come more maps, later
 
@@ -52,7 +52,7 @@
         %hr
         .span5
 
-          = render partial:"addresses/form"
+          = render partial:"addresses/form" if @user == current_user
 
 :javascript
   $(document).ready(function(){

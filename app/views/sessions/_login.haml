@@ -12,9 +12,11 @@
       %span.add-on
         %i.icon-asterisk
     = password_field_tag :password, params[:password], type:"password", placeholder:"Password"
+
     .field
-      = check_box_tag :remember_me, 1, params[:remember_me]
-      = label_tag :remember_me
+      %label.checkbox 
+        %input{type:"checkbox", value:1, name:"remember_me"} Remember Me
+
     = submit_tag :Login, :class => "btn btn-primary"  
 .modal-footer
   = link_to "Signup", new_user_path
