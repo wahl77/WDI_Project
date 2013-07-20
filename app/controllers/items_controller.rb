@@ -33,7 +33,8 @@ class ItemsController < ApplicationController
     @item_locations = current_user.current_location.nil? ? [] : [["Current Location", current_user.current_location.id]] 
   end
   def show
-    @item = Item.find(params[:id])
+    #@item = Item.find(params[:id])
+    @item =  Item.joins(:images).where("items.id = ? OR images.imageable_id = ? AND images.imageable_type = 'Item'", params[:id], params[:id]).select("items.*, images.url as image_url").first
   end
 
   def index

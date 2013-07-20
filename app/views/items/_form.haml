@@ -1,51 +1,50 @@
-.row
-  = form_for @item do |f|
-    .span12 
-      - if @item.errors.any?
-        .error_messages
-          %h2 Form is invalid
-          %ul
-            - for message in @item.errors.full_messages
-              %li= message
+= form_for @item do |f|
+  .span12 
+    - if @item.errors.any?
+      .error_messages
+        %h2 Form is invalid
+        %ul
+          - for message in @item.errors.full_messages
+            %li= message
 
-    .row
-      .span3
-        %h3 Item Info
-        .field
-          = f.label :name
-          = f.text_field :name
+  .row
+    .span3
+      %h3 Item Info
+      .field
+        = f.label :name
+        = f.text_field :name
 
-        .field
-          = f.label :description
-          = f.text_area :description, rows: "3" 
+      .field
+        = f.label :description
+        = f.text_area :description, rows: "3" 
 
-        .field
-          = f.label :location
-          = f.select :location, @item_locations 
-
-
-        .actions
-          = f.submit "Submit"
-
-      .span3
-        %h3 Categories
-        .field 
-          - Category.all.each do |category|
-            = check_box_tag "item[category_ids][]", category.id, @item.category_ids.include?(category.id)
-            = category.name
-            %br
-
-      .span3
-        %h3 Availabilities
+      .field
+        = f.label :location
+        = f.select :location, @item_locations 
 
 
+      .actions
+        = f.submit "Submit"
 
-      .span3
-        %h3 Pictures
-        .item_picture_list
-          - @item.images.each do |image|
-            = image_tag image.url, class: "item_tile"
+    .span3
+      %h3 Categories
+      .field 
+        - Category.all.each do |category|
+          = check_box_tag "item[category_ids][]", category.id, @item.category_ids.include?(category.id)
+          = category.name
+          %br
 
-        .field
-          = f.label :image, "Add Picture"
-          = f.file_field :image
+    .span3
+      %h3 Availabilities
+
+
+
+    .span3
+      %h3 Pictures
+      .item_picture_list
+        - @item.images.each do |image|
+          = image_tag image.url, class: "item_tile"
+
+      .field
+        = f.label :image, "Add Picture"
+        = f.file_field :image

@@ -8,8 +8,8 @@
   .row
     .span6 
       .item_picture_list
-        - @item.images.each do |image|
-          = image_tag image.url, class: "item_tile"
+        = @item.image_url
+        = image_tag @item.images.first.url, class: "item_tile"
 
     .span6 
       = render partial:"layouts/map", locals:{place:[@item.location]}
