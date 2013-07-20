@@ -11,6 +11,10 @@
       %br
       = @item.description
 
+      .item_categories
+        %ul
+          - @item.categories.each do |category|
+            %li= category.name
       .item_picture_list
         - @item.images.each do |image|
           = image_tag image.url, class: "item_tile"

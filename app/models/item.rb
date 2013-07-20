@@ -1,16 +1,15 @@
 class Item < ActiveRecord::Base
+
+  attr_accessible :description, :name, :location_id, :category_ids, :location
+
   belongs_to :user
-  attr_accessible :description, :name, :location_id
+
+  has_many :categorizations
+  has_many :categories, through: :categorizations
 
   has_many :images, as: :imageable, dependent: :destroy
 
   has_one :location, as: :locatable, dependent: :destroy
-
-  searchable do 
-    text :name
-    text :description
-  end
-
 
   # Get a list of items which are around a current location
   def self.around(location, range=100)
