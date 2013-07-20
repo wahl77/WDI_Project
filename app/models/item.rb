@@ -11,6 +11,10 @@ class Item < ActiveRecord::Base
 
   has_one :location, as: :locatable, dependent: :destroy
 
+
+  validates :name,
+    presence:true
+
   # Get a list of items which are around a current location
   def self.around(location, range=100)
     
