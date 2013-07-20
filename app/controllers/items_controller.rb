@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update_attributes(name: params[:item][:name], description: params[:item][:description])
+    @item.update_attributes(name: params[:item][:name], description: params[:item][:description], category_ids: params[:item][:category_ids])
     @item.images << Image.create(url: params[:item][:image]) unless params[:item][:image].nil? 
 
     redirect_to item_path(@item)
