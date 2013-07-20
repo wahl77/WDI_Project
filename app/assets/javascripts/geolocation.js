@@ -16,9 +16,11 @@ $(document).ready(function(){
         "location[latitude]": latitude,
         "location[longitude]": longitude
       },
+      beforeSend: function(){
+      },
       complete: function(response){
         console.log(response.responseText);
-        $('.row').last().append(response.responseText);
+        $('.item_picture_list').last().append(response.responseText);
 
       }
     };
@@ -40,6 +42,8 @@ $(document).ready(function(){
   }
 
   function get_postion(event){
+    $('h1').show();
+    $('.item_picture_list').empty();
     var mapOptions = {
       zoom: 14,
       zoomControl: false,
