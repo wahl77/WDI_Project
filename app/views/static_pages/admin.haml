@@ -1,0 +1,6 @@
+.container
+  .row
+    .span12 
+      = @locations
+
+    = render partial:"layouts/map", locals:{place: @locations}

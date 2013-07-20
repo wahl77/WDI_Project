@@ -17,7 +17,7 @@ $(document).ready(function(){
         "location[longitude]": longitude
       },
       complete: function(response){
-        console.log(response.responseText);
+        $('.spinner').hide();
         $('.item_picture_list').last().append(response.responseText);
 
       }
@@ -41,6 +41,8 @@ $(document).ready(function(){
 
   function get_postion(event){
     $('h1').show();
+    $('.spinner').show();
+
     $('.item_picture_list').empty();
     var mapOptions = {
       zoom: 14,

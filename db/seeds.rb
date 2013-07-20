@@ -23,7 +23,7 @@ b.addresses.create(name: "Janes", city: "New York", number_and_street: "251 West
 25.times do |x|
   item = Item.create(name: "Item#{x}")
   b.items << item
-  loc = b.addresses.first.location.dup
+  loc = a.addresses.last.location.dup
   item.location = loc
 end
 
