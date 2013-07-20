@@ -9,6 +9,7 @@ User.destroy_all
 Item.destroy_all
 Location.destroy_all
 Address.destroy_all
+Category.destroy_all
 
 a = User.create(email: "a@a.com", password: "a")
 b = User.create(email: "b@b.com", password: "a")

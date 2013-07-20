@@ -1,6 +1,8 @@
 RailsProject::Application.routes.draw do
 
   get "/admin" => 'static_pages#admin'
+  get "/about" => 'static_pages#about', as: :about
+
   get "/logout" => 'sessions#destroy', as: :logout
   get "/signup" => 'users#new', as: :signup
   root :to => 'static_pages#index'

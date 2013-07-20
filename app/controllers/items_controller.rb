@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     @image = Image.create(url: params[:item][:image]) unless params[:item][:image].nil?
     @item.images << @image unless @image.nil?
     if @item.save
+      b.save
       @item.location = b
       current_user.items << @item
       redirect_to item_path(@item)

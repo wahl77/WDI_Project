@@ -7,17 +7,30 @@
 
   .row
     .span6 
-      Description: 
-      %br
-      = @item.description
-
-      .item_categories
-        %ul
-          - @item.categories.each do |category|
-            %li= category.name
       .item_picture_list
         - @item.images.each do |image|
           = image_tag image.url, class: "item_tile"
 
     .span6 
       = render partial:"layouts/map", locals:{place:[@item.location]}
+
+  .row
+    .span12
+      %h2 Item Information
+  .row
+    .span4
+      %h4 Data
+      %strong Name: 
+      = @item.description
+      %br
+      %strong Description:
+      = @item.description
+
+    .span4
+      .item_categories
+        %h4 Categories
+        %ul
+          - @item.categories.each do |category|
+            %li= category.name
+    .span4
+      %h4 Availabilites

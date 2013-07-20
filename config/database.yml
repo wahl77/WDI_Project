@@ -18,6 +18,7 @@ development:
   database: WDI_Project_development
   pool: 5
   username: <%= ENV['DB_USER'] %>
+  host: localhost
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -44,6 +45,7 @@ test:
   database: WDI_Project_test
   pool: 5
   username: <%= ENV['DB_USER'] %>
+  host: localhost
   password:
 
 production:
@@ -52,4 +54,5 @@ production:
   database: WDI_Project_production
   pool: 5
   username: <%= ENV['DB_USER'] %>
+  host: localhost
   password:
