@@ -16,8 +16,6 @@ $(document).ready(function(){
         "location[latitude]": latitude,
         "location[longitude]": longitude
       },
-      beforeSend: function(){
-      },
       complete: function(response){
         console.log(response.responseText);
         $('.item_picture_list').last().append(response.responseText);

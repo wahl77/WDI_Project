@@ -1,7 +1,7 @@
 = form_for Address.new do |f|
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, placeholder: "Home"
   .field
     = f.label :number_and_street, "Street and number"
     = f.text_field :number_and_street
