@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :categorizations
   has_many :items, through: :categorizations
 
-  validate :name,
+  validates :name,
     presence:true,
     uniqueness:true
 end
