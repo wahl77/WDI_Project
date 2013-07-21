@@ -60,11 +60,12 @@ class ItemsController < ApplicationController
 
   def around_me
     @per_page = 5
-    @items = []
-    @locations = Location.page(params[:page]).per_page(@per_page).near(current_user.current_location, 100).where("locatable_type = ?", "Item") 
+    query = []
+    @locations = Location.page(params[:page]).per_page(@per_page).near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id") 
     @locations.each do |location|
-      @items << Item.find(location.locatable_id)
+      query << location.item_id
     end
+    @items = Item.find(query)
 
     respond_to do |format|
       format.html
