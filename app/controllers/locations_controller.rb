@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
 
-  skip_before_filter :require_login, only:[:new_geotag]
+  skip_load_and_authorize_resource only:[:new_geotag]
 
   def new_geotag
     location = Location.new(params[:location])

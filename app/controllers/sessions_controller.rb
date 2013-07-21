@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_login, only:[:new, :create, :destroy]
+  skip_load_and_authorize_resource only:[:new, :create, :destroy]
+
   def new
   end
 

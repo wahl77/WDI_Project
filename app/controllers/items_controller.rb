@@ -1,10 +1,14 @@
 class ItemsController < ApplicationController
 
+  #need the following line, otherwise, it breaks for some reason
+  skip_load_and_authorize_resource only:[:create]#except:[:around_me]
+
   def new
     @item = Item.new
     @item_locations = current_user.current_location.nil? ? [] : [["Current Location", current_user.current_location.id]] 
     @item_locations += current_user.addresses.map{|x| [x.name, x.location.id]}
   end
+
   def create
     loc = Location.find(params[:item][:location])
     b = loc.dup 

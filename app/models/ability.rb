@@ -35,23 +35,33 @@ class Ability
     #can :update, Address { |address| address && address.user == user }
       #can :update, Item { |item| item && item.user == user }
 
-    #can :read, :all
-    can :read, Item
 
+    can :create, Item
+    can :read, Item
+    can :around_me, Item
     can [:update, :destroy], Item do |item| 
       item && item.user == user 
     end
 
+    can :create, User
+    can :read, User do |some_user|
+      some_user == user
+    end
     can :update, User do |some_user|
       some_user == user 
     end
 
+    can :create, Address
     can :read, Address do |address|
       user.addresses.include? address
     end
     can :destroy, Address do |address|
       user.addresses.include? address
     end
+
+
+    can :manage, Image
+    can :manage, Location
 
   end
 end

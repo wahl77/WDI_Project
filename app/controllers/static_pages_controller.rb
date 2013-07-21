@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  skip_before_filter :require_login, only:[:index, :admin]
+  skip_load_and_authorize_resource only:[:index, :admin]
 
   def index
   end
