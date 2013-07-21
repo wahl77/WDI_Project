@@ -59,13 +59,29 @@ class ItemsController < ApplicationController
   end
 
   def around_me
-    @per_page = 5
+    if params[:categories].nil?
+      categories = Category.all.map{|x| x.id}
+    else
+      categories = params[:categories].split(",")
+    end
+
+    @per_page = 100
     query = []
-    @locations = Location.page(params[:page]).per_page(@per_page).near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id") 
+    @locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id").page(params[:page]).per_page(@per_page)
+    #@locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id") 
+
     @locations.each do |location|
       query << location.item_id
     end
     @items = Item.find(query)
+    
+    list = []
+    categories.each do |category|
+      @items.select{ |item| list << item if item.category_ids.include? category.to_i}
+    end
+
+    @items = list.uniq || []
+    
 
     respond_to do |format|
       format.html

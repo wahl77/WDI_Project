@@ -1,7 +1,8 @@
 $('.item_picture_list').append('<%= j render partial:"items" %>')
                                                          
 <% if @locations.next_page %>                             
-  $('.pagination').replaceWith('<%= j will_paginate @locations %>');
+  $('.pagination').remove();
+  $('.span12').last().append('<%= j will_paginate @locations %>');
   $('.spinner').remove();
 <% else %>                                               
   $('.pagination').remove();

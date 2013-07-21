@@ -3,6 +3,11 @@
     .span12
       %h1 
         Around Me
+    
+
+      - Category.all.each do |category|
+        = check_box_tag category.id, category.id, checked:true
+        = category.name
       %h3
         We found 
         =pluralize(@items.length, "item")
