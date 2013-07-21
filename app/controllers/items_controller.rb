@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @item_locations = current_user.current_location.nil? ? [] : [["Current Location", current_user.current_location.id]] 
+    @item_locations += current_user.addresses.map{|x| [x.name, x.location.id]}
   end
   def show
     @item = Item.find(params[:id])

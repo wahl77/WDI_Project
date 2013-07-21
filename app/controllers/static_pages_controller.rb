@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  skip_load_and_authorize_resource only:[:index, :admin]
+  skip_load_and_authorize_resource only:[:index, :admin, :about]
 
   def index
   end
@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
     @items.each do |item|
       @locations << item.location
     end
-
+  end
+  def about
   end
 end
