@@ -1,14 +1,13 @@
-- @items.each do |item|
-  - first_image = item.images.first
-  - if first_image.nil?
+- @all.each do |x|
+  - if x.image_id.nil?
     .item_picture
       %h1
-        = link_to item.name, item_path(item.id)
+        = link_to x.item_name, item_path(x.item_id)
       %p
-        = item.description
+        = x.item_description
   - else
-    .item_picture{style:"background: url(\"#{first_image.url}\"); background-size: 200px 200px; background-size: cover"}
+    .item_picture{style:"background: url(\"/uploads/images/image/url/#{x.image_id}/#{x.image_url}\"); background-size: 200px 200px; background-size: cover"}
       %h1
-        = link_to item.name, item_path(item.id)
+        = link_to x.item_name, item_path(x.item_id)
       %p
-        = item.description
+        = x.item_description

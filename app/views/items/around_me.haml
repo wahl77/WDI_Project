@@ -9,9 +9,7 @@
         = check_box_tag category.id, category.id, checked:true
         = category.name
       %h3
-        We found 
-        =pluralize(@items.length, "item")
-        around you
+        We found this around you
   .row
     .span12
 
@@ -20,7 +18,7 @@
       .item_picture_list
         = render partial:"items"
 
-      = will_paginate @locations
+      = will_paginate @all
 
   .row
     .span12

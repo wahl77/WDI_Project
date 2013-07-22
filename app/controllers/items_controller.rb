@@ -67,21 +67,22 @@ class ItemsController < ApplicationController
 
     @per_page = 100
     query = []
-    @locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id").page(params[:page]).per_page(@per_page)
+    #@locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id").joins("LEFT OUTER JOIN images on image.imageable_id = item.id AND image.imageable_type = Item").page(params[:page]).per_page(@per_page)
+    @all = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id, items.name as item_name, items.description as item_description ").joins("LEFT OUTER JOIN images on images.imageable_id = items.id and images.imageable_type = 'Item'").select("images.id as image_id, images.url as image_url").order("item_id DESC").page(params[:page]).per_page(@per_page)
     #@locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id") 
 
-    @locations.each do |location|
-      query << location.item_id
-    end
-    @items = Item.find(query)
-    
-    list = []
-    categories.each do |category|
-      @items.select{ |item| list << item if item.category_ids.include? category.to_i}
-    end
+    #@locations.each do |location|
+    #  query << location.item_id
+    #end
+    #@items = Item.find(query)
+    #
+    #list = []
+    #categories.each do |category|
+    #  @items.select{ |item| list << item if item.category_ids.include? category.to_i}
+    #end
 
-    @items = list.uniq || []
-    
+    #@items = list.uniq || []
+    #
 
     respond_to do |format|
       format.html
