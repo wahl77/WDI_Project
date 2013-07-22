@@ -60,15 +60,15 @@ class ItemsController < ApplicationController
 
   def around_me
     if params[:categories].nil?
-      categories = Category.all.map{|x| x.id}
+      @categories = Category.all.map{|x| x.id.to_s}
     else
-      categories = params[:categories].split(",")
+      @categories = params[:categories].split(",")
     end
 
     @per_page = 100
     query = []
-    #@locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id").joins("LEFT OUTER JOIN images on image.imageable_id = item.id AND image.imageable_type = Item").page(params[:page]).per_page(@per_page)
-    @all = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id, items.name as item_name, items.description as item_description ").joins("LEFT OUTER JOIN images on images.imageable_id = items.id and images.imageable_type = 'Item'").select("images.id as image_id, images.url as image_url").order("item_id DESC").page(params[:page]).per_page(@per_page)
+
+    @all = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id, items.name as item_name, items.description as item_description ").joins("LEFT OUTER JOIN images on images.imageable_id = items.id and images.imageable_type = 'Item'").select("images.id as image_id, images.url as image_url").joins("LEFT OUTER JOIN categorizations on categorizations.item_id = items.id").select("categorizations.category_id as item_category").order("item_id DESC").page(params[:page]).per_page(@per_page)
     #@locations = Location.near(current_user.current_location, 10).where("locatable_type = ?", "Item").joins("LEFT OUTER JOIN items on items.id = locations.locatable_id").select("items.id as item_id") 
 
     #@locations.each do |location|

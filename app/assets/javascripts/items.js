@@ -31,7 +31,7 @@ $(document).ready(function(){
     $.ajax(options);
   }
 
-  if($('.pagination').css("display") != "none"){ 
+  if($('.pagination').length){ 
   
     $(window).scroll(function(){    
 
@@ -51,7 +51,11 @@ $(document).ready(function(){
       };
 
       if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50){
+        //console.log("ScrollTop: " + $(window).scrollTop())
+        //console.log("Doc Height: " + $(document).height())
+        //console.log("Windwo Height: " + $(window).height())
         $.ajax(options);        
+        console.log("query:" + url)
       }
     });
     return $(window).scroll();
