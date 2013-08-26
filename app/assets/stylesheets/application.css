@@ -36,11 +36,6 @@ body{
   max-width: 940px;
   margin: 0 auto;
 }
-#map_home_page span{
-  background-color: rgba(255, 255, 255, 0.7);
-  font-size:60px;
-  line-height: 150px;
-}
 
 .cool img, #map_home_page img{ /* Solve google maps + bootstrap not workgin */
   max-width: none;
