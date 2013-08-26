@@ -1,7 +1,5 @@
 class LocationsController < ApplicationController
 
-  skip_load_and_authorize_resource only:[:new_geotag]
-
   def new_geotag
     location = Location.new(params[:location])
     @categories = Category.all.map{|x| x.id.to_s}

@@ -1,9 +1,4 @@
 class Item < ActiveRecord::Base
-  
-  searchable do 
-    text :name, boost: 10
-    text :description, boost: 7
-  end
 
   attr_accessible :description, :name, :location_id, :category_ids, :location
 
@@ -20,20 +15,16 @@ class Item < ActiveRecord::Base
   validates :name,
     presence:true
 
-  # Get a list of items which are around a current location
-  def self.around(location, range=100)
-    
-    #items = []
-    #Location.near(location, 100).where("locatable_type = ?", "Item").each do |location|
-    #  items << Item.find(location.locatable_id)
-    #end
-    #return items
+  searchable do 
+    text :name, boost: 10
+    text :description, boost: 7
+    integer :location_id
   end
 
-  def self.item_search(query)
+  def self.item_search(query, location=nil, range=10)
     self.search do
       fulltext query
+      with(:location_id, Location.near(location, range).map{|x| x.id})
     end
   end
-
 end
