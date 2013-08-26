@@ -15,8 +15,7 @@ gem 'geocoder'
 gem 'will_paginate'
 gem 'simple_form'
 gem 'cancan'
-#gem 'sunspot_rails'
-#gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+gem 'sunspot_rails'
 
 
 
@@ -48,6 +47,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'pry-debugger'
   gem 'dotenv-rails'
+  gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 end
 
 # To use ActiveModel has_secure_password

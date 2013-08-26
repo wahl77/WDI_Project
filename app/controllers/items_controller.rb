@@ -76,6 +76,11 @@ class ItemsController < ApplicationController
       format.html
       format.js { render layout: false }
     end
+  end
 
+
+
+  def search
+    @all = Item.item_search(params[:search]).results
   end
 end

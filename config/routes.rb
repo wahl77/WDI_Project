@@ -10,6 +10,8 @@ RailsProject::Application.routes.draw do
   get "/around_me" => 'items#around_me', as: :around_me
   get "/update_location" => 'locations#new_geotag', as: :geotag
 
+  post "/search" => 'items#search', as: :search
+
   
   resources :sessions
   resources :users

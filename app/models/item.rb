@@ -1,4 +1,9 @@
 class Item < ActiveRecord::Base
+  
+  searchable do 
+    text :name, boost: 10
+    text :description, boost: 7
+  end
 
   attr_accessible :description, :name, :location_id, :category_ids, :location
 
@@ -23,6 +28,12 @@ class Item < ActiveRecord::Base
     #  items << Item.find(location.locatable_id)
     #end
     #return items
+  end
+
+  def self.item_search(query)
+    self.search do
+      fulltext query
+    end
   end
 
 end

@@ -1,0 +1,32 @@
+%button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
+
+.nav-collapse.collapse
+  / .nav, .navbar-search, .navbar-form, etc
+  %ul.nav
+    %li= link_to "Nearbuy", root_path, class:"brand"
+    - if current_user
+      %li 
+        = link_to "My Profile", user_path(current_user)
+
+      %li 
+        = link_to "My Items", items_path
+    
+      %li 
+        = link_to "Around Me", around_me_path
+
+  
+  %ul.nav.pull-right
+      
+    %li 
+      = link_to "About", about_path
+    %li
+      - if !current_user
+        %a{href:"#login_modal", "data-toggle" => "modal"}Login
+      - else
+        = link_to "Logout #{current_user.email}", logout_path
+- if current_user 
+  = form_tag search_path, class:"navbar-search pull-right" do
+    = text_field_tag :search, nil, placeholder:"Search", class: "search-query"
