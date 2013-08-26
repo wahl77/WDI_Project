@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720022658) do
+ActiveRecord::Schema.define(:version => 20130826203036) do
 
   create_table "addresses", :force => true do |t|
     t.string   "number_and_street"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(:version => 20130720022658) do
 
   add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
   add_index "categorizations", ["item_id"], :name => "index_categorizations_on_item_id"
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "sender_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["sender_id"], :name => "index_comments_on_sender_id"
 
   create_table "images", :force => true do |t|
     t.string   "url"

@@ -38,3 +38,15 @@
     .span12
       = link_to "Edit", edit_item_path(@item.id), class: "btn btn-warning" if can? :edit, @item
       = link_to "Delete", item_path(@item.id), {method: :delete, class: "btn btn-danger"} if can? :destroy, @item
+
+
+  .row
+    .span12
+      = render partial: "comments/form", locals:{comment: @item.comments.build}
+
+  .row
+    .span12
+      - @item.comments.each do |comment|
+        = comment.content
+        = comment.sender.email if comment.sender
+        %br

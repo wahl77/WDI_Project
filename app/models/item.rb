@@ -11,6 +11,8 @@ class Item < ActiveRecord::Base
 
   has_one :location, as: :locatable, dependent: :destroy
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
 
   validates :name,
     presence:true
@@ -27,4 +29,5 @@ class Item < ActiveRecord::Base
       with(:location_id, Location.near(location, range).map{|x| x.id})
     end
   end
+
 end

@@ -1,5 +1,7 @@
 RailsProject::Application.routes.draw do
 
+  get "comments/create"
+
   get "/admin" => 'static_pages#admin'
   get "/about" => 'static_pages#about', as: :about
 
@@ -17,4 +19,6 @@ RailsProject::Application.routes.draw do
   resources :users
   resources :items
   resources :addresses
+
+  resources :comments, only: [:create]
 end
