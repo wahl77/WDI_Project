@@ -77,7 +77,6 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @query = params[:search]
-    @all = Item.item_search(@query, last_location).results
+    @all = Item.item_search(params[:search], last_location, params[:range]).results
   end
 end
