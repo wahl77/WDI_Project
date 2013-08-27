@@ -1,4 +1,4 @@
-%script{src:"https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"}
+%script{type:"text/javascript", src:"http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"}
 .container 
   .row
     .span12
@@ -32,3 +32,14 @@
             .item_picture{style:"background: url(\"/uploads/images/image/url/#{x.image_id}/#{x.image_url}\"); background-size: 200px 200px; background-size: cover"}
               %h1= link_to x.item_name, item_path(x.item_id)
               %p= x.item_description
+
+
+
+  :javascript
+    $(document).ready(initialize_gmaps_autocomplete());
+
+    function initialize_gmaps_autocomplete() {
+      var input = document.getElementById('search_box');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.setTypes(['geocode']);
+    }

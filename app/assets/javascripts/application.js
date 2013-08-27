@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require_tree ./BootStrap
+//= require_tree ./gmaps4rails
+//= require items
+//= require geolocation
+
