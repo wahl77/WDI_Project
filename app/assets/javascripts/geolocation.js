@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   $('#locate_me').on("click", get_postion);
   $('#find_address').on("click", get_postion);
@@ -61,6 +60,13 @@ $(document).ready(function(){
       } else {
         alert("Sorry, your browser does not suport GeoLocation");
       }
+    } else if (event.target.id == "find_address") {
+      geocoder = new google.maps.Geocoder();
+      address = $('#search_box').val()
+      geocoder.geocode({'address': address}, function(results, status){ 
+         position = { coords: {latitude: results[0].geometry.location.ob, longitude: results[0].geometry.location.pb}}
+          show_pos(position)
+      });
     } else {
     }
   }
