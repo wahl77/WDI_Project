@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def current_location
-    return Location.where("locatable_type = ? AND locatable_id = ?", self.class.to_s, self.id).first
+    return Location.where("locatable_type = ? AND locatable_id = ?", self.class.to_s, self.id).last
   end
 
   def current_location=(value)
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     return Time.now - current_location.updated_at
   end
 
-  def last_location_is_good
+  def last_location_is_good?
     return time_since_last_update < 3600 ? true : false
   end
 
