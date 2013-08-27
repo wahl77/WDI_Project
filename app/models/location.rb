@@ -19,7 +19,7 @@ class Location < ActiveRecord::Base
     when "Item"
       return "<h4>#{link_to locatable.name, "/items/#{locatable.id}"}</h4>"
     when "User"
-      return "Current Location"
+      return "Last Location"
     else
       return "#{locatable}"
     end

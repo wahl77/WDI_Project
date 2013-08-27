@@ -31,5 +31,7 @@ b.addresses.create(name: "Janes", city: "New York", number_and_street: "251 West
   item.categories << Category.first
   loc = a.addresses.last.location.dup
   item.location = loc
+  item.location_id = loc.id
+  item.save
 end
 
