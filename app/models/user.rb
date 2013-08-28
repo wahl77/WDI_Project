@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :locations, through: :addresses
 
+  has_many :comments, through: :items
 
   validates :email,
     presence: true,

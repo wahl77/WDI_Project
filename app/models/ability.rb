@@ -60,6 +60,14 @@ class Ability
     end
 
 
+    can :create, Comment
+    can :read, Comment do |comment|
+      comment.public? || (user == comment.sender) || (user.comments.include? comment)
+    end
+    can :destroy, Comment do |comment|
+      user == comment.sender
+    end
+
     can :manage, Image
     can :manage, Location
 

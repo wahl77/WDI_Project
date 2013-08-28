@@ -41,12 +41,8 @@
 
 
   .row
-    .span12
+    .span6.offset3
+      %h3 Comments
       = render partial: "comments/form", locals:{comment: @item.comments.build}
-
-  .row
-    .span12
-      - @item.comments.each do |comment|
-        = comment.content
-        = comment.sender.email if comment.sender
-        %br
+      %br
+      = render partial: "comments/comments", locals:{comments: @item.comments}

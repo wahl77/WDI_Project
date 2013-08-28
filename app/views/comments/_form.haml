@@ -8,8 +8,14 @@
 
   = f.hidden_field :item_id, value: @item.id
 
+
   .field
     = f.label :content, "New Comment"
     = f.text_area :content, rows:"3", style:'width:100%'
+  .field
+    = f.radio_button :public, 1, checked: true
+    Public
+    = f.radio_button :public, 0
+    Private
   .actions
     = f.submit 'Send', class: "pull-right btn btn-success"

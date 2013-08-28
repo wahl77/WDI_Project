@@ -20,5 +20,5 @@ RailsProject::Application.routes.draw do
   resources :items
   resources :addresses
 
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :destroy]
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826203036) do
+ActiveRecord::Schema.define(:version => 20130828172815) do
 
   create_table "addresses", :force => true do |t|
     t.string   "number_and_street"
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(:version => 20130826203036) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "sender_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "public",           :default => true
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
