@@ -17,17 +17,18 @@ class Item < ActiveRecord::Base
   validates :name,
     presence:true
 
-  searchable do 
-    text :name, boost: 10
-    text :description, boost: 7
-    integer :location_id
-  end
+  #searchable do 
+  #  text :name, boost: 10
+  #  text :description, boost: 7
+  #  integer :location_id
+  #end
 
   def self.item_search(query, location=nil, range=10)
-    self.search do
-      fulltext query
-      with(:location_id, Location.near(location, range).map{|x| x.id})
-    end
+    #self.search do
+    #  fulltext query
+    #  with(:location_id, Location.near(location, range).map{|x| x.id})
+    #end
+    Item.where("name @@ :q OR description @@ :q", q: "%#{query}%").where(id: Location.near(location, range).map{|x| x.id}.to_a)
   end
 
   def self.near(location=nil, range=10)
