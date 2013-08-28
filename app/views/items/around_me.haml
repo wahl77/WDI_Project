@@ -6,19 +6,15 @@
     
 
       - Category.all.each do |category|
-        = check_box_tag category.id, category.id, checked:true
+        = check_box_tag category.name.downcase, category.id, checked:true
         = category.name
       %h3
         We found this around you
   .row
     .span12
 
-      /= render partial:"layouts/map", locals:{place: @locations}
-
       .item_picture_list
-        = render partial:"items"
-
-      = will_paginate @all
+        = render partial:"items", locals:{items: @items}
 
   .row
     .span12

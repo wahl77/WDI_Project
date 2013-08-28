@@ -23,16 +23,7 @@
   .row
     .span12 
       .item_picture_list
-        - @items.each do |x|
-          - if x.image_id.nil?
-            .item_picture
-              %h1= link_to x.item_name, item_path(x.item_id)
-              %p= x.item_description
-          - else 
-            .item_picture{style:"background: url(\"/uploads/images/image/url/#{x.image_id}/#{x.image_url}\"); background-size: 200px 200px; background-size: cover"}
-              %h1= link_to x.item_name, item_path(x.item_id)
-              %p= x.item_description
-
+        = render partial:"items/items", locals:{items: @items}
 
 
   :javascript

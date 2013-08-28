@@ -30,4 +30,8 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def self.near(location=nil, range=10)
+    Item.where(location_id: Location.near(location, range).map{|x| x.id}.to_a)
+  end
+
 end

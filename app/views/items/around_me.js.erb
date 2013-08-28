@@ -1,7 +1,1 @@
-$('.item_picture_list').append('<%= j render partial:"items" %>')
-$('.pagination').remove();
-                                                         
-<% if @all.next_page %>                             
-  $('.span12').last().append('<%= j will_paginate @all %>');
-  $('.spinner').remove();
-<% end %>
+$('.item_picture_list').append('<%= j render partial:"items", locals:{items: @items}%>')

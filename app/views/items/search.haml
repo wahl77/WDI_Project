@@ -6,13 +6,4 @@
   .row
     .span12
       .item_picture_list
-        - @all.each do |x|
-          - if x.images.empty?
-            .item_picture
-              %h1= link_to x.name, item_path(x.id)
-              %p= x.description
-          - else 
-            .item_picture{style:"background: url(\"#{x.images.first.url}\"); background-size: 200px 200px; background-size: cover"}
-              %h1= link_to x.name, item_path(x.id)
-              %p= x.description
-
+        = render partial:"items", locals:{items: @items}
