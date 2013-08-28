@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     if @item.save
       b.save
       @item.location_id = b.id
+      @item.location = b
       @item.save
       current_user.items << @item
       redirect_to item_path(@item)

@@ -27,8 +27,9 @@
               = f.file_field :image
             .field
               = f.label :location
-              = f.select :location, current_user.addresses.map{|x| [x.name, x.location.id]}
-
+              - @item_locations = current_user.current_location.nil? ? [] : [["Last Location", current_user.current_location.id]] 
+              - @item_locations += current_user.addresses.map{|x| [x.name, x.location.id]}
+              = f.select :location,  @item_locations
             .actions
               = f.submit "Submit", class: "btn btn-success"
 
