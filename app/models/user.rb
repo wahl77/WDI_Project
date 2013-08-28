@@ -17,9 +17,12 @@ class User < ActiveRecord::Base
     format:{with:EMAIL_REGEX}
 
   validates :password,
-    #format:{with:PASSWORD_REGEX},
     presence:true, on: :create,
     confirmation:true
+
+  validates :password, 
+    format:{with:PASSWORD_REGEX, message: "Password must be at least 8 characters long"},
+    if: lambda{ Rails.env.production? }
 
  accepts_nested_attributes_for :image
  attr_accessible :image_attributes
